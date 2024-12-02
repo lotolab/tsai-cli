@@ -18,6 +18,7 @@ bin/**/*.d.ts
 renovate.json
 gulpfile.js
 /.vscode
+pnpm-lock.yaml
 
 # sample
 /sample

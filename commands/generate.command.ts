@@ -1,8 +1,11 @@
 import * as chalk from 'chalk';
 import * as Table from 'cli-table3';
 import { Command, CommanderStatic } from 'commander';
-import { AbstractCollection, CollectionFactory } from '../lib/schematics';
-import { Schematic } from '../lib/schematics/nest.collection';
+import {
+  AbstractCollection,
+  CollectionFactory,
+  Schematic,
+} from '../lib/schematics';
 import { loadConfiguration } from '../lib/utils/load-configuration';
 import { AbstractCommand } from './abstract.command';
 import { Input } from './command.input';

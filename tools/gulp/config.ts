@@ -1,2 +1,3 @@
 // All paths are related to the base dir
-export const sources = ['lib', 'actions', 'commands', 'bin'];
+// 'actions' move into lib
+export const sources = ['lib', 'commands', 'bin'];
