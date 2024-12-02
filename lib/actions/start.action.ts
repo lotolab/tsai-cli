@@ -6,10 +6,7 @@ import * as killProcess from 'tree-kill';
 import { Input } from '../../commands';
 import { getTscConfigPath } from '../compiler/helpers/get-tsc-config.path';
 import { getValueOrDefault } from '../compiler/helpers/get-value-or-default';
-import {
-  defaultConfiguration,
-  defaultOutDir,
-} from '../configuration/defaults';
+import { defaultConfiguration, defaultOutDir } from '../configuration/defaults';
 import { ERROR_PREFIX } from '../ui';
 import { treeKillSync as killProcessSync } from '../utils/tree-kill';
 import { BuildAction } from './build.action';

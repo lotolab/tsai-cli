@@ -2,7 +2,12 @@ import * as chokidar from 'chokidar';
 import { copyFileSync, mkdirSync, rmSync, statSync } from 'fs';
 import { sync } from 'glob';
 import { dirname, join, sep } from 'path';
-import { ActionOnFile, Asset, AssetEntry, Configuration } from '../configuration';
+import {
+  ActionOnFile,
+  Asset,
+  AssetEntry,
+  Configuration,
+} from '../configuration';
 import { copyPathResolve } from './helpers/copy-path-resolve';
 import { getValueOrDefault } from './helpers/get-value-or-default';
 

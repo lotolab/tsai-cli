@@ -196,9 +196,7 @@ export class BuildAction extends AbstractAction {
     watchMode: boolean,
     onSuccess: (() => void) | undefined,
   ) {
-    const { WebpackCompiler } = await import(
-      '../compiler/webpack-compiler'
-    );
+    const { WebpackCompiler } = await import('../compiler/webpack-compiler');
     const webpackCompiler = new WebpackCompiler(this.pluginsLoader);
 
     const webpackPath =
