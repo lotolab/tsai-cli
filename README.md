@@ -19,6 +19,18 @@ $ npm install -g @tsailab/cli
 
 ## Usage
 
+### Create a new monorepo project
+
+```bash
+mkdir tsai-plat
+tsai n --directory tsai-plat tsai-admin
+cd tsai-plat
+tsai g lib core 
+# this command will mageration origin app filles into apps,
+# then nest-cli.json will change to an monorepo 
+tsai g app some-app 
+```
+
 Learn more in the [Nestjs official documentation](https://docs.nestjs.com/cli/overview).
 
 ## Stay in touch
