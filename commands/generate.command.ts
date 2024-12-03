@@ -47,9 +47,7 @@ export class GenerateCommand extends AbstractCommand {
       .option('--no-spec', 'Disable spec files generation.', () => {
         return { value: false, passedAsInput: true };
       })
-      .option('--lib-publishing', 'Libaray is publically package', () => {
-        return {value:false,passedAsInput:true}
-      }, false)
+      .option('--lib-publishing', 'Libaray is publically package', () => true, false)
       .option(
         '-c, --collection [collectionName]',
         'Schematics collection to use.',

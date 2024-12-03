@@ -158,7 +158,7 @@ const generateFiles = async (inputs: Input[]) => {
 };
 
 const mapSchematicOptions = (inputs: Input[]): SchematicOption[] => {
-  const excludedInputNames = ['schematic', 'spec', 'flat', 'specFileSuffix'];
+  const excludedInputNames = ['schematic', 'spec', 'flat', 'specFileSuffix','libPublishing'];
   const options: SchematicOption[] = [];
   inputs.forEach((input) => {
     if (!excludedInputNames.includes(input.name) && input.value !== undefined) {
