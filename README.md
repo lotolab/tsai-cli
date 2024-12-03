@@ -31,7 +31,33 @@ tsai g lib core
 tsai g app some-app 
 ```
 
+> Tsai monorepo workspace struct
+
+```text
+━┳ Root
+ ┣━┳ apps               // micro apps
+   ┣━━ tsai-admin       // admin service
+   ┣━━ some-app
+
+ ┗━┳ packages   // libaray  
+   ┣━━ common   // lib common depence
+   ┣━━ core     // tsai core feature
+   ┣━━ uc-orm   // 
+
+```
+
 Learn more in the [Nestjs official documentation](https://docs.nestjs.com/cli/overview).
+
+### Publish libaray
+
+> If you want publishing your libs privately and publically,you add an pnpm workspace file which named \'pnpm-workspace.yaml\'
+> 
+
+```
+# pnpm-workspace.yaml
+packages:
+  - 'packages/*'
+```
 
 ## Stay in touch
 

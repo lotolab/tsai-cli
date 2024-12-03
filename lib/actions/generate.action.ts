@@ -55,6 +55,11 @@ const generateFiles = async (inputs: Input[]) => {
     ? getValueOrDefault(configuration, 'sourceRoot', appName)
     : configuration.sourceRoot;
 
+  const libPublishing = inputs.find((o)=>o.name ==='libPublishing')
+  const libPublishValue = libPublishing!.value as boolean  
+
+  schematicOptions.push(new SchematicOption('libPublishing',libPublishValue))
+
   const specValue = spec!.value as boolean;
   const flatValue = !!flat?.value;
   const specFileSuffixValue = specFileSuffix!.value as string;
