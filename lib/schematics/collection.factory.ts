@@ -12,7 +12,7 @@ export class CollectionFactory {
       Runner.SCHEMATIC,
     ) as SchematicRunner;
 
-    if (collection === Collection.NESTJS) {
+    if (collection === Collection.NESTJS || collection === Collection.TSAILAB) {
       return new TsaiCollection(schematicRunner);
     } else {
       return new CustomCollection(collection, schematicRunner);

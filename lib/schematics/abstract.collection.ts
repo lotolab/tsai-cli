@@ -14,6 +14,7 @@ export abstract class AbstractCollection {
   ) {
     let command = this.buildCommandLine(name, options);
     command = extraFlags ? command.concat(` ${extraFlags}`) : command;
+
     await this.runner.run(command);
   }
 

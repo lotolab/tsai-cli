@@ -17,3 +17,5 @@
 // });
 
 // require('./tools/gulp/gulpfile');
+
+//  npx ts-node bin/tsai.ts g lib core -d

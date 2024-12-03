@@ -28,7 +28,10 @@ export class GenerateAction extends AbstractAction {
 }
 
 const generateFiles = async (inputs: Input[]) => {
+
   const configuration = await loadConfiguration();
+
+
   const collectionOption = inputs.find(
     (option) => option.name === 'collection',
   )!.value as string;
@@ -55,10 +58,7 @@ const generateFiles = async (inputs: Input[]) => {
     ? getValueOrDefault(configuration, 'sourceRoot', appName)
     : configuration.sourceRoot;
 
-  const libPublishing = inputs.find((o)=>o.name ==='libPublishing')
-  const libPublishValue = libPublishing!.value as boolean  
-
-  schematicOptions.push(new SchematicOption('libPublishing',libPublishValue))
+  // const libPublishing = inputs.find((o)=>o.name ==='libPublishing')
 
   const specValue = spec!.value as boolean;
   const flatValue = !!flat?.value;
@@ -142,10 +142,13 @@ const generateFiles = async (inputs: Input[]) => {
     new SchematicOption('specFileSuffix', generateSpecFileSuffix),
   );
   try {
+  
     const schematicInput = inputs.find((input) => input.name === 'schematic');
+
     if (!schematicInput) {
       throw new Error('Unable to find a schematic for this configuration');
     }
+  
     await collection.execute(schematicInput.value as string, schematicOptions);
   } catch (error) {
     if (error && error.message) {

@@ -44,10 +44,12 @@ export class GenerateCommand extends AbstractCommand {
         'Use a custom suffix for spec files.',
       )
       .option('--skip-import', 'Skip importing', () => true, false)
-      .option('--lib-publishing', 'Libaray is publically package', () => true, false)
       .option('--no-spec', 'Disable spec files generation.', () => {
         return { value: false, passedAsInput: true };
       })
+      .option('--lib-publishing', 'Libaray is publically package', () => {
+        return {value:false,passedAsInput:true}
+      }, false)
       .option(
         '-c, --collection [collectionName]',
         'Schematics collection to use.',
@@ -97,11 +99,13 @@ export class GenerateCommand extends AbstractCommand {
             value: command.skipImport,
           });
 
-          options.push({
-            name:'libPublishing',
-            value:command.libPublishing
-          })
-
+          if(command.libPublishing !== undefined){
+            options.push({
+              name:'libPublishing',
+              value:!!command.libPublishing
+            })
+          }
+   
           const inputs: Input[] = [];
           inputs.push({ name: 'schematic', value: schematic });
           inputs.push({ name: 'name', value: name });
@@ -115,7 +119,7 @@ export class GenerateCommand extends AbstractCommand {
   private async buildDescription(): Promise<string> {
     const collection = await this.getCollection();
     return (
-      'Generate a Nest element.\n' +
+      'Generate a Nest or Tsai element.\n' +
       `  Schematics available on ${chalk.bold(collection)} collection:\n` +
       this.buildSchematicsListAsTable(await this.getSchematics(collection))
     );
