@@ -1,6 +1,6 @@
 {
   "name": "@tsailab/cli",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Tsai-cli - modern, fast, powerful node.js web framework (@cli) extends from nestjs",
   "publishConfig": {
     "access": "public"
