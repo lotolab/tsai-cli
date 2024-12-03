@@ -39,15 +39,14 @@ export class GenerateCommand extends AbstractCommand {
         },
         true,
       )
+      .option('--no-spec', 'Disable spec files generation.', () => {
+        return { value: false, passedAsInput: true };
+      })
       .option(
         '--spec-file-suffix [suffix]',
         'Use a custom suffix for spec files.',
       )
       .option('--skip-import', 'Skip importing', () => true, false)
-      .option('--no-spec', 'Disable spec files generation.', () => {
-        return { value: false, passedAsInput: true };
-      })
-      .option('--lib-publishing', 'Libaray is publically package', () => true, false)
       .option(
         '-c, --collection [collectionName]',
         'Schematics collection to use.',
@@ -96,13 +95,6 @@ export class GenerateCommand extends AbstractCommand {
             name: 'skipImport',
             value: command.skipImport,
           });
-
-          if(command.libPublishing !== undefined){
-            options.push({
-              name:'libPublishing',
-              value:!!command.libPublishing
-            })
-          }
    
           const inputs: Input[] = [];
           inputs.push({ name: 'schematic', value: schematic });

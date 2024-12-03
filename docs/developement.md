@@ -30,6 +30,7 @@ require('./tools/gulp/gulpfile');
 ```bash
 node --require ts-node/register bin/tsai.ts g lib core --lib-publishing -d
 
+node --require ts-node/register bin/tsai.ts n --directory ./oka admin --skip-install -d
 ```
 
 * **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
