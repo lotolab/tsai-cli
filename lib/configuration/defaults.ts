@@ -70,6 +70,7 @@ lerna-debug.log*
 .env.test.local
 .env.production.local
 .env.local
+.env*
 
 # temp directory
 .temp
@@ -83,4 +84,14 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Tsai public library
+**/*.tsbuildinfo
+packages/**/dist
+libs/**/dist
+**/node_modules
+
+# Tsai App environment config
+**/.conf/*
+!**/.conf/**/*.example
 `;
