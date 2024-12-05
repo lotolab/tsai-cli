@@ -17,27 +17,6 @@ It is a command-line interface tool that helps you to initialize, develop, and m
 
 The CLI works with [schematics](https://github.com/angular/angular-cli/tree/master/packages/angular_devkit/schematics), and provides built in support from the schematics collection at [@tsailab/schematics](https://github.com/lotolab/tsai-schematics).
 
-
-## Installation
-
-```
-$ npm install -g @tsailab/cli
-```
-
-## Usage
-
-### Create a new monorepo project
-
-```bash
-mkdir tsai-plat
-tsai n --directory tsai-plat tsai-admin
-cd tsai-plat
-tsai g lib core 
-# this command will mageration origin app filles into apps,
-# then nest-cli.json will change to an monorepo 
-tsai g app some-app 
-```
-
 > Tsai monorepo workspace struct
 
 ```text
@@ -46,19 +25,95 @@ tsai g app some-app
    ┣━━ tsai-admin       // admin service
    ┣━━ some-app
 
- ┗━┳ packages   // libaray  
+ ┗━┳ libs   // project libaraies  
+   ┣━━ biz-lib   // lib common depence
+
+ ┗━┳ packages   // public libaraies  
    ┣━━ common   // lib common depence
    ┣━━ core     // tsai core feature
    ┣━━ uc-orm   // 
 
+ ┣━ package.json
+ ┣━ pnpm-workspace.yaml
+ ·
+ ·
+ ·
 ```
+
+## Installation
+```
+$ npm install -g @tsailab/cli
+```
+
+- show commands help
+
+```
+$ tsai -h
+$ tsai g --help
+```
+
+## Usage
+
+### How create a new monorepo project
+
+> Create an monorepo workspace by tsai step by step
+
+1. create application
+
+```
+$ tsai new tsai-plat --directory ./mono-root
+```
+
+2. convert this project to monorepo workspace
+
+```
+$ cd mono-root
+$ tsai g app tsai-admin 
+```
+
+3. create project library 
+
+```
+tsai g lib biz-lib
+```
+
+4. create an public package 
+
+  - <p color="red"> use option -P or --pkg-public </p>
+
+```
+tsai g lib core -P
+```
+
+
+:boom: :boom: :boom: :star2: :star2: :two_hearts: :two_hearts: :two_hearts:
+
+<h4 align="left">
+Congratulations, you have completed the creation of the Monorepo project
+</h4>
+
+:star: :star: :star: :star: :star: :star: :star: :star:
+
 
 Learn more in the [Nestjs official documentation](https://docs.nestjs.com/cli/overview).
 
-### Publish libaray
+### Use pnpm management your packages
 
-> If you want publishing your libs privately and publically,you add an pnpm workspace file which named \'pnpm-workspace.yaml\'
-> 
+
+
+```bash
+# add package denpendency  
+pnpm add vue -Sw
+
+# add package to some lib
+pnpm -F core add lodash -D --save-peer 
+
+# excute npm scripts
+pnpm -F core build
+```
+
+Learn more commands in the [Pnpm offcial documentation](https://pnpm.io/workspaces)
+ 
 
 ```
 # pnpm-workspace.yaml
