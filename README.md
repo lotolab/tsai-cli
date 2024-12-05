@@ -56,7 +56,7 @@ $ tsai g --help
 
 ### How create a new monorepo project
 
-> Create an monorepo workspace by tsai step by step
+> Create an monorepo workspace use tsai step by step
 
 1. create application
 
