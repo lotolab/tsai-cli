@@ -47,6 +47,7 @@ export class GenerateCommand extends AbstractCommand {
         'Use a custom suffix for spec files.',
       )
       .option('--skip-import', 'Skip importing', () => true, false)
+      .option('-P,--pkg-public', 'Enforce library pacakage is public', () => true, false)
       .option(
         '-c, --collection [collectionName]',
         'Schematics collection to use.',
@@ -95,6 +96,13 @@ export class GenerateCommand extends AbstractCommand {
             name: 'skipImport',
             value: command.skipImport,
           });
+
+          // pkg public
+          options.push({
+            name:'pkgPublic',
+            value:!!command.pkgPublic
+          })
+
    
           const inputs: Input[] = [];
           inputs.push({ name: 'schematic', value: schematic });

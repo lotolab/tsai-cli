@@ -28,9 +28,21 @@ require('./tools/gulp/gulpfile');
 ## Development
 
 ```bash
+build schematics dependency package
+# replace locale
+npm uninstall @tsailab/cli 
+npm install <path locale package> -D
+
+node --require ts-node/register bin/tsai.ts n --directory ./examples admin-plat --skip-install 
+
+cd examples
+
+## make project to monorepo project 
+node --require ts-node/register ../bin/tsai.ts g app tsai-admin --skip-import
+
 node --require ts-node/register bin/tsai.ts g lib core --lib-publishing -d
 
-node --require ts-node/register bin/tsai.ts n --directory ./oka admin --skip-install -d
+
 ```
 
 * **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)

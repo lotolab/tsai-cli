@@ -22,5 +22,6 @@ pnpm-lock.yaml
 
 # sample
 /sample
+/examples
 
 yarn.lock

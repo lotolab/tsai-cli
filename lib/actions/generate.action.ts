@@ -48,6 +48,10 @@ const generateFiles = async (inputs: Input[]) => {
   const collection: AbstractCollection = CollectionFactory.create(
     collectionOption || configuration.collection || Collection.TSAILAB,
   );
+
+  const pkgPublicOption = inputs.find((o)=>o.name === 'pkgPublic')
+
+  // pass command args to angluar-devkit
   const schematicOptions: SchematicOption[] = mapSchematicOptions(inputs);
   schematicOptions.push(
     new SchematicOption('language', configuration.language),
@@ -58,10 +62,11 @@ const generateFiles = async (inputs: Input[]) => {
     ? getValueOrDefault(configuration, 'sourceRoot', appName)
     : configuration.sourceRoot;
 
-  // const libPublishing = inputs.find((o)=>o.name ==='libPublishing')
-
   const specValue = spec!.value as boolean;
   const flatValue = !!flat?.value;
+
+  const isPkgPublic = !!pkgPublicOption?.value
+
   const specFileSuffixValue = specFileSuffix!.value as string;
   const specOptions = spec!.options as any;
   let generateSpec = shouldGenerateSpec(
@@ -141,6 +146,11 @@ const generateFiles = async (inputs: Input[]) => {
   schematicOptions.push(
     new SchematicOption('specFileSuffix', generateSpecFileSuffix),
   );
+
+  schematicOptions.push(
+    new SchematicOption('pkgPublic',isPkgPublic)
+  )
+
   try {
   
     const schematicInput = inputs.find((input) => input.name === 'schematic');
@@ -157,8 +167,14 @@ const generateFiles = async (inputs: Input[]) => {
   }
 };
 
+/**
+ * filter name schematics & path
+ * @param inputs 
+ * @returns SchematicOption[]
+ */
 const mapSchematicOptions = (inputs: Input[]): SchematicOption[] => {
-  const excludedInputNames = ['schematic', 'spec', 'flat', 'specFileSuffix','libPublishing'];
+  //,'pkgPublic'
+  const excludedInputNames = ['schematic', 'spec', 'flat', 'specFileSuffix','pkgPublic'];
   const options: SchematicOption[] = [];
   inputs.forEach((input) => {
     if (!excludedInputNames.includes(input.name) && input.value !== undefined) {
