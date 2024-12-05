@@ -112,7 +112,7 @@ pnpm -F core add lodash -D --save-peer
 pnpm -F core build
 ```
 
-Learn more commands in the [Pnpm offcial documentation](https://pnpm.io/workspaces)
+Learn more commands in the [PNPM offcial documentation](https://pnpm.io/workspaces)
  
 
 ```
